@@ -1,0 +1,34 @@
+html,
+body {
+    height: 100%;
+}
+
+.icon {
+    position: absolute;
+    right: 5%;
+    top: 15%;
+
+}
+
+.top-icon {
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    transition: transform 0.3s ease;
+    z-index: 10001;
+}
+
+.top-icon:hover {
+    transform: scale(1.2);
+}
+
+
+.search-icon-container {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    right: 3%;
+    bottom: 30%;
+}

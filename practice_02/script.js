@@ -3,7 +3,7 @@ const searchIconContainer = document.querySelector('.search-icon-container');
 const modalBtn = document.querySelector('.modal-btn');
 
 
-document.getElementById('player-search-form').addEventListener('submit', function (event) {
+document.getElementById('meal-search-form').addEventListener('submit', function (event) {
     submitForm(event);
 });
 
@@ -13,7 +13,7 @@ document.querySelector('.search-icon').addEventListener('click', function (event
 
 const fetchMeal = (params = '') => {
     toggleSpinner(true)
-    fetch(`www.themealdb.com/api/json/v1/1/search.php?s=${params}`)
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${params}`)
         .then(res => res.json())
         .then(data => {
             toggleSpinner(false)
@@ -37,7 +37,7 @@ function createCard(data) {
                 <p class="card-text">Orgin: ${data.strArea}</p>
                 <p class="card-text">${(data.strInstructions + '').split(' ').slice(0, 10).join(' ') + '...'}</p>
                 <div data-playerId="${data.idPlayer}" class="d-inline-block">
-                <button type="button" class="btn btn-info rounded-0 d-inline-block ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showPlayerDetails('${data.strMeal}', '${data.strCategory}', '${data.strArea}', '${data.strInstructions}'">
+                <button type="button" class="btn btn-info rounded-0" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showMealDetails('${data.strMeal}', '${data.strCategory}', '${data.strArea}', '${data.strInstructions}')">
                     See Details
                 </button>
             </div>
@@ -46,11 +46,11 @@ function createCard(data) {
     return card;
 }
 
-function showPlayerDetails(name, category, area, instructions) {
+function showMealDetails(name, category, area, instructions) {
     document.querySelector('.modal-title').innerText = name
-    document.querySelector('.country').innerText = category
-    document.querySelector('.team').innerText = area
-    document.querySelector('.salary').innerText = instructions
+    document.querySelector('.category').innerText = category
+    document.querySelector('.area').innerText = area
+    document.querySelector('.instructions').innerText = instructions
 }
 
 
